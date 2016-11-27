@@ -1,0 +1,1 @@
+ApiError = Struct.new :errors
