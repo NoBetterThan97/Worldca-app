@@ -1,4 +1,6 @@
-development:
-  access_token: <ACCESS_TOKEN HERE>
+--- development:
+TWEETSEARCH_API: 'http://localhost:9292/api/v0.1' SECRET: 'some secret'
 test:
-  access_token: <ACCESS_TOKEN HERE>
+TWEETSEARCH_API: 'http://localhost:9292/api/v0.1' SECRET: 'some secret'
+production:
+TWEETSEARCH_API: 'https://my-server.com/api/v0.1' SECRET: 'some secret'
