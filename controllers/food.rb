@@ -16,6 +16,6 @@ class WorldcaApp < Sinatra::Base
       flash[:error] = result.value.message
     end
 
-    slim :food
+    slim :foods
   end
 end
