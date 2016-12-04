@@ -1,8 +1,4 @@
-get '/?' do
-result = GetAllGroups.call if result.success?
-@data = result.value else
-flash[:error] = result.value.message end
-slim :group end
+
 
 # frozen_string_literal: true
 require 'json'
