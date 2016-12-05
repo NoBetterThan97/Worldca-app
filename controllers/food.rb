@@ -8,6 +8,11 @@ class WorldcaApp < Sinatra::Base
   # Home page: show number of courses each resource contains
 
   get "/?" do
+
+    erb :home
+  end
+  
+  get "/food_name/?" do
     result = GetAllFoods.call
 
     if result.success?
@@ -16,6 +21,6 @@ class WorldcaApp < Sinatra::Base
       flash[:error] = result.value.message
     end
 
-    slim :food
+    slim :foods
   end
 end
