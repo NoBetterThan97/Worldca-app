@@ -1,0 +1,22 @@
+table class="table" id="groups_table"
+  thead
+    tr
+      th Food Photo
+      th Food Rank
+      th Food Name
+      th Tag Amount
+  tbody
+    - @data&.foods&.each&.with_index do |food, index|
+      tr class="foods_row" id="food[#{index}].row"
+        td
+          span class="food_photo" id="food[#{index}].photo"
+            a href="/foods/#{food.id}" id="food[#{index}].photo" #{food.food_name} pic
+        td
+          span class="food_rank" id="food[#{index}].rank"
+          a #{index+1}
+        td
+          span class="food_name" id="food[#{index}].food_name"
+            a id="food[#{index}].food_name" #{food.food_name}
+        td
+          span class="tag_amount" id="tag_amount#{index}"
+            a id="food[#{index}].tag_amount" #{food.tag_amount}

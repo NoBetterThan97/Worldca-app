@@ -8,13 +8,13 @@ class WorldcaApp < Sinatra::Base
   # Home page: show number of courses each resource contains
 
   get "/?" do
-    result = GetWorldCals.call(params)
+    result = GetHighRank5.call
     if result.success?
-      @data = AllGroupsView.new(result.value)
+      @data = RankView.new(result.value)
     else
       flash[:error] = result.value.message
     end
 
-    slim :all_groups
+    slim :rank_high_5
   end
 end

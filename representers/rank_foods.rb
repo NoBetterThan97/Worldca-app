@@ -5,5 +5,5 @@ require_relative 'rank_food'
 class RankFoodsRepresenter < Roar::Decorator
   include Roar::JSON
 
-  collection :rank_food, extend: RankFoodRepresenter, class: RankFoodDetails
+  collection :foods, extend: RankFoodRepresenter, class: RankFoodDetails
 end

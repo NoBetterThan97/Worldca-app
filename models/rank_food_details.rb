@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-RankFoodDetails = Struct.new :id, :name, :photo, :tag_amount
+RankFoodDetails = Struct.new :id, :food_name, :photo, :tag_amount

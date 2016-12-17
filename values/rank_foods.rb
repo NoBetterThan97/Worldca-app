@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-Rank_Foods = Struct.new :rank_foods
+Rank_Foods = Struct.new :foods

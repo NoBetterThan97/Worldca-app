@@ -5,7 +5,7 @@ class RankFoodRepresenter < Roar::Decorator
   include Roar::JSON
 
   property :id
-  property :name
+  property :food_name
   property :photo
   property :tag_amount
 end
