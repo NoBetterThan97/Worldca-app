@@ -1,6 +1,18 @@
---- development:
-TWEETSEARCH_API: 'http://localhost:9292/api/v0.1' SECRET: 'some secret'
+---
+development:
+  WORLDCA_API: 'http://localhost:9292/api/v0.1'
+  SECRET: 'some secret'
+  FOOD_APP_ID: 'some secret'
+  FOOD_APP_SECRET: 'some secret'
+
 test:
-TWEETSEARCH_API: 'http://localhost:9292/api/v0.1' SECRET: 'some secret'
+  WORLDCA_API: 'http://localhost:9292/api/v0.1'
+  SECRET: 'some secret'
+  FOOD_APP_ID: 'some secret'
+  FOOD_APP_SECRET: 'some secret'
+
 production:
-TWEETSEARCH_API: 'https://my-server.com/api/v0.1' SECRET: 'some secret'
+  WORLDCA_API: 'https://my-server.com/api/v0.1'
+  SECRET: 'some secret'
+  FOOD_APP_ID: 'some secret'
+  FOOD_APP_SECRET: 'some secret'

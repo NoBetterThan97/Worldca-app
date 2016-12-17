@@ -8,14 +8,13 @@ class WorldcaApp < Sinatra::Base
   # Home page: show number of courses each resource contains
 
   get "/?" do
-    result = GetAllFoods.call
-
+    result = GetWorldCals.call(params)
     if result.success?
-      @data = result.value
+      @data = AllGroupsView.new(result.value)
     else
       flash[:error] = result.value.message
     end
 
-    slim :foods
+    slim :all_groups
   end
 end
