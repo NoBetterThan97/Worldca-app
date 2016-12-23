@@ -8,12 +8,12 @@ class RankView
 end
 
 class RankDescriptionView
-  attr_reader :id, :food_name, :photo, :tag_amount
+  attr_reader :id, :name, :image_url, :tag_amount
 
   def initialize(food)
     @id = food.id
-    @food_name = food.food_name
-    @photo = food.photo
+    @name = food.name
+    @photo = food.image_url
     @tag_amount = food.tag_amount
   end
 end

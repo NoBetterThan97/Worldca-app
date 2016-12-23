@@ -4,7 +4,7 @@
 class FoodRepresenter < Roar::Decorator
   include Roar::JSON
   property :id
-  property :food_name
+  property :name
   property :consumed_at
   property :serving_qty
   property :serving_unit
@@ -19,5 +19,5 @@ class FoodRepresenter < Roar::Decorator
   property :nf_sugars
   property :nf_protein
   property :nf_potassium
-  property :photo
+  property :image_url
 end
