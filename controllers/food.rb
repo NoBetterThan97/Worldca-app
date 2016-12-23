@@ -24,4 +24,15 @@ class WorldcaApp < Sinatra::Base
 
     slim :rank_high_5
   end
+  get '/foods/:name/?' do
+    #group_details = GetGroupDetails.call(params[:name])
+    #if group_details.success?
+    #  group_postings = group_details.value
+    #  @group = GroupDetailsView.new(group_postings)
+      slim :foods
+    #else
+    #  flash[:error] = 'Could not find that group -- we are investigating!'
+    #  redirect '/'
+    #end
+  end
 end
