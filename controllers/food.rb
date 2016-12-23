@@ -15,6 +15,13 @@ class WorldcaApp < Sinatra::Base
       flash[:error] = result.value.message
     end
 
+    result_daily = GetDailyConsumed.call
+    if result.success?
+      @data_Daily_Consumed = result_daily.value.worldcals
+    else
+      flash[:error] = result.value.message
+    end
+
     slim :rank_high_5
   end
 end
