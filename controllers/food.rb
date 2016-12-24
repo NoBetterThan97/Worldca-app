@@ -24,15 +24,15 @@ class WorldcaApp < Sinatra::Base
 
     slim :rank_high_5
   end
-  get '/foods/:name/?' do
-    #group_details = GetGroupDetails.call(params[:name])
-    #if group_details.success?
-    #  group_postings = group_details.value
-    #  @group = GroupDetailsView.new(group_postings)
+  get '/food/nutrix/:name/?' do
+    food_nutrix = GetFoodNutrix.call(params[:name])
+    if food_nutrix.success?
+      nutrix_food = food_nutrix.value
+      @food_nutrix = NutrixView.new(nutrix_food)
       slim :foods
-    #else
-    #  flash[:error] = 'Could not find that group -- we are investigating!'
-    #  redirect '/'
-    #end
+    else
+      flash[:error] = 'Could not find that group -- we are investigating!'
+      redirect '/'
+    end
   end
 end

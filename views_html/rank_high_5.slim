@@ -15,13 +15,13 @@
             tr class="foods_row" id="food[#{index}].row"
               td
                 span class="food_photo" id="food[#{index}].image_url"
-                  a href="/foods/#{food.id}" id="food[#{index}].image_url" #{food.name} pic
+                  a href="#{food.image_url}" id="food[#{index}].image_url" #{food.name} pic
               td
                 span class="food_rank" id="food[#{index}].rank"
                   a #{index+1}
               td
                 span class="name" id="food[#{index}].name"
-                  a id="food[#{index}].name" #{food.name}
+                  a href="/food/nutrix/#{food.name}" id="food[#{index}].name" #{food.name}
               td
                 span class="tag_amount" id="tag_amount#{index}"
                   a id="food[#{index}].tag_amount" #{food.tag_amount}
