@@ -1,54 +1,27 @@
-.container
-  /! Title
-  .row
-    .col-lg-12
-      h3 Food Name
-  /! /.row
-  /! Page Features
-  .row.text-center
-    .col-md-4.hero-feature
-      .thumbnail
-        img alt="" src="http://placehold.it/400x200" /
-        .caption
-          h3 Food pic
-      .thumbnail
-        .caption
-          h3 align="left"  Total Consumed
-          h2 align="center"  8787
-          h3 align="right"  cals
-      .thumbnail
-        img alt="" src="http://placehold.it/400x200" /
-        .caption
-          h3 Food compose pic
-    .col-md-8.hero-feature
-      .thumbnail
-        .caption
-          h3 Food nutrition
-          table.table
-            caption Serving size 1 pizza
-            thead
-              tr
-                th Element
-                th Cals
-                th % Daily Value
-            tbody
-              tr
-                td Fat
-                td 19.5g
-                td 30%
-              tr
-                td Cholesterol
-                td 87.1mg
-                td 29%
-              tr
-                td Sodium
-                td 995.6mg
-                td 41%
-              tr
-                td Carbohydrate
-                td 64.9g
-                td 22%
-              tr
-                td Protein
-                td 38.5g
-                td
+html lang="en" 
+  body
+    .demo-layout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      main.mdl-layout__content.mdl-color--grey-100
+        .mdl-grid.demo-content
+          .set-page-height.mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col
+            .mdl-card__supporting-text
+              h3 The World have Consumed
+            .cal-show 870
+            h1.cal-show-foot Cal Today
+          .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing
+            .set-page-height.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop
+              .mdl-card__title.mdl-card--expand
+                .mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+                  main.mdl-layout__content
+                    .mdl-tabs.mdl-js-tabs
+                      .mdl-tabs__tab-bar
+                        a.mdl-tabs__tab.is-active href="#tab1-panel"  Top 5
+                        a.mdl-tabs__tab href="#tab2-panel"  Less 5
+                      #tab1-panel.mdl-tabs__panel.is-active
+                        p Tab 1 Content
+                      #tab2-panel.mdl-tabs__panel
+                        p Tab 2 Content
+                      #tab3-panel.mdl-tabs__panel
+                        p Tab 3 Content                
+              
+    script src="../../material.min.js" 
