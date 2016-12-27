@@ -28,9 +28,11 @@ html lang="en"
                             - @data_top&.foods&.each&.with_index do |food, index|
                               tr
                                 td.mdl-data-table__cell--non-numeric
-                                  img alt="" height="40" src='#{food.image_url}' width="40" /
+                                  img alt="" height="40" src="#{food.image_url}" width="40" /
                                 td
                                   a href="/food/nutrix/#{food.name}"  #{food.name}
+                                  br/
+                                  span.tag-show #{food.tag_amount}
                                 td # #{index+1}
                         .mdl-card__actions.mdl-card--border.learn_more
                           button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect onclick="location.href='/foods/top25'"  Learn More
@@ -48,6 +50,8 @@ html lang="en"
                                   img alt="" height="40" src="#{food.image_url}" width="40" /
                                   td
                                     a href="/food/nutrix/#{food.name}"  #{food.name}
+                                    br/
+                                    span.tag-show #{food.tag_amount}
                                   td # #{index+1}
                         .mdl-card__actions.mdl-card--border.learn_more
                           button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect onclick="location.href='/foods/less25'"  Learn More
