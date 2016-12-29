@@ -32,10 +32,11 @@ describe 'Homepage' do
       # GIVEN: user goes to the homepage
       visit HomePage do |page|
         # THEN: user should see a row with group information and links
-        #page.foods_count.must_be :>=, 0
-        page.first_row.food_image_element.src.must_include 'http'
+        page.foods_count.must_be :>=, 0
+        page.first_row.food_image_element.wont_be_nil
         page.first_row.food_link_element.href.must_include 'food'
-        #page.first_row.food_tag_element.must_be :>=, 0
+        tags =page.first_row.food_tag.to_i
+        tags.must_be :>=, 0
       end
     end
   end
