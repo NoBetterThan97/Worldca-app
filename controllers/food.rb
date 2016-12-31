@@ -9,7 +9,7 @@ class WorldcaApp < Sinatra::Base
 
   get "/?" do
 
-    slim :foods
+    slim :food_details
 
   end
   get '/foods/:name/?' do
