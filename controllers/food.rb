@@ -9,7 +9,7 @@ class WorldcaApp < Sinatra::Base
 
   get "/?" do
 
-    slim :food_details
+    slim :foods
 
   end
   get '/foods/:name/?' do
@@ -17,7 +17,7 @@ class WorldcaApp < Sinatra::Base
     #if group_details.success?
     #  group_postings = group_details.value
     #  @group = GroupDetailsView.new(group_postings)
-      slim :foods
+      slim :food_details
     #else
     #  flash[:error] = 'Could not find that group -- we are investigating!'
     #  redirect '/'
