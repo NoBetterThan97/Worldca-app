@@ -123,6 +123,7 @@ html, body {
 
 .demo-content {
   max-width: 1080px;
+  padding-top: 100px;
 }
 
 .demo-charts {
@@ -270,9 +271,7 @@ height: 450px;
 .card {background: #FFF none repeat scroll 0% 0%; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.3); margin-bottom: 30px; }
 body{ background: #EDECEC;}
 
-.set-top{
-padding-top: 65px;
-}
+
 
 .tab-pannel{
 height: 27px;
@@ -310,4 +309,117 @@ table.center {
 .learn_more{
 margin-top: 38px;
 text-align: center;
+}
+
+
+.set-name{height: 100px;}
+.set-name-width{width: 30px;}
+
+.set-food-image{padding-top: 40px;}
+.set-food-title{padding-left: 50px;
+padding-top: 50px;}
+
+.set-pannel{
+  height: 400px;
+}
+
+.align-nutrix{
+  padding-left: 300px
+}
+
+
+#nutritionfacts {
+    background-color:white;
+    padding:20px; width:244px;
+    padding-left: 20px;
+}
+#nutritionfacts td {
+    color:black;
+    font-family:'Arial Black','Helvetica Bold',sans-serif;
+    font-size:8pt;
+    padding:0;
+}
+#nutritionfacts td.header {
+    font-family:'Arial Black','Helvetica Bold',sans-serif;
+    font-size:28px;
+    white-space:nowrap;
+}
+#nutritionfacts div.label {
+    float:left;
+    font-family:'Arial Black','Helvetica Bold',sans-serif;
+}
+#nutritionfacts div.serving {
+    font-family:Arial,Helvetica,sans-serif;
+    font-size:8pt;
+    text-align:center;
+}
+#nutritionfacts div.weight {
+    display:inline;
+    font-family:Arial,Helvetica,sans-serif;
+    padding-left:1px;
+}
+#nutritionfacts div.dv {
+    display:inline;
+    float:right;
+    font-family:'Arial Black','Helvetica Bold',sans-serif;
+}
+#nutritionfacts table.vitamins td {
+    font-family:Arial,Helvetica,sans-serif;
+    white-space:nowrap;
+    width:33%;
+}
+#nutritionfacts div.line {
+    border-top:1px solid black;
+}
+#nutritionfacts div.labellight {
+    float:left;
+    font-family:Arial,Helvetica,sans-serif;
+}
+#nutritionfacts .highlighted {
+    border:1px dotted grey;
+    padding:2px;
+}
+
+.label-set{
+  border-bottom: 1px solid rgba(0,0,0,.1);
+  background-color: #2196F3;
+  height: 50px;
+}
+
+.panel-text{
+  color: white;
+  margin-top: 0px;
+}
+
+.total-consumption{
+  width:600px;
+  height:500px;
+  margin-left: 150px;
+}
+.align-pannel{
+  width: 350px;
+}
+.consumption--show {
+  font-size: 100px;
+  padding-top: 60px;
+  padding-left: 10px;
+  color: black;
+}
+
+.consumption-cal{
+font-size: 50px;
+}
+.consumption-hight{
+  height: 150px;
+}
+
+
+.set-bar-hight{
+  height: 300px;
+}
+
+.set-pie-hight{height: 220px;}
+
+.set-pannel-background{
+background-color: #5cb85c;
 }

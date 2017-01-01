@@ -1,0 +1,198 @@
+link href="../material.min.css" rel="stylesheet" /
+link href="../styles.css" rel="stylesheet" /
+| <!doctype html
+html lang="en"
+  head
+    script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"
+    javascript:
+      google.charts.load('current', {'packages':["corechart", "bar"]});
+      // Draw the pie chart for Sarah's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawCalPieChart);
+
+      // Draw the pie chart for the Anthony's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawDailyBarChart);
+
+      // Callback that draws the pie chart for Sarah's pizza.
+      function drawCalPieChart() {
+
+        // Create the data table for Sarah's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Nutrition');
+        data.addColumn('number', 'Percentage of Calories');
+        data.addRows([
+          ['Fat', 1],
+          ['Cholesterol', 1],
+          ['Sodium', 2],
+          ['Carbohydrates', 2],
+          ['Protein', 1]
+        ]);
+
+        // Set options for Sarah's pie chart.
+        var options = { width:400,
+                       height:300};
+
+        // Instantiate and draw the chart for Sarah's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+        chart.draw(data, options);
+      }
+
+      // Callback that draws the pie chart for Anthony's pizza.
+      function drawDailyBarChart() {
+
+        // Create the data table for Anthony's pizza.
+        var data = new google.visualization.arrayToDataTable([
+          ['Nutrient', 'Percentage'],
+          ["Fat", 44],
+          ["Cholesterol", 31],
+          ["Sodium", 12],
+          ["Carbohydrates", 10],
+          ['Protein', 3]
+        ]);
+
+        // Set options for Anthony's pie chart.
+        var options = {
+          width: 600,
+          legend: { position: 'none' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        // Instantiate and draw the chart for Anthony's pizza.
+        var chart = new google.charts.Bar(document.getElementById('bar_chart'));
+        chart.draw(data, options);
+      }
+  body
+    .demo-layout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      main.mdl-layout__content.mdl-color--grey-100
+        .mdl-grid.demo-content
+          .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid.set-name
+            .mdl-layout__header-row
+              span.android-title.mdl-layout-title.set-food-image
+                img alt="" height="100" src="http://icons.iconarchive.com/icons/sonya/swarm/256/Fast-Food-icon.png" width="100" /
+              .set-food-title
+                h1 Apple
+          .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--4-col
+            .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-pannel
+              .mdl-card__supporting-text.mdl-color-text--grey-600
+                #nutritionfacts
+                  table cellpadding="0" cellspacing="0" width="242"
+                    tbody
+                      tr
+                        td.header align="center"  Nutrition Facts
+                      tr
+                        td
+                          .serving
+                            | Per
+                            span.highlighted 180.0g
+                            | Serving Size
+                      tr style=("height: 7px")
+                        td bgcolor="#000000"
+                      tr
+                        td style=("font-size: 7pt")
+                          .line Amount Per Serving
+                      tr
+                        td
+                          .line
+                            .label
+                              | Calories
+                              .weight 230
+                            .labellight style=("padding-top: 1px; float: right;")
+                              | Calories from Fat
+                              .weight 56
+                      tr
+                        td
+                          .line
+                            .dvlabel
+                              | \% Daily Value
+                              sup *
+                      tr
+                        td
+                          .line
+                            .label
+                              | Total Fat
+                              .weight 6.2g
+                            .dv 10%
+                      tr
+                        td.indent
+                          .line
+                            .labellight
+                              | Saturated Fat
+                              .weight 3.5g
+                            .dv 17%
+                      tr
+                        td.indent
+                          .line
+                            .labellight
+                              i Trans
+                              | Fat
+                              .weight 0.0g
+                      tr
+                        td
+                          .line
+                            .label
+                              | Cholesterol
+                              .weight 22mg
+                            .dv 7%
+                      tr
+                        td
+                          .line
+                            .label
+                              | Sodium
+                              .weight 618mg
+                            .dv 26%
+                      tr
+                        td
+                          .line
+                            .label
+                              | Total Carbohydrates
+                              .weight 32.2g
+                            .dv 11%
+                      tr
+                        td.indent
+                          .line
+                            .labellight
+                              | Dietary Fiber
+                              .weight 5.2g
+                            .dv 21%
+                      tr
+                        td.indent
+                          .line
+                            .labellight
+                              | Sugars
+                              .weight 3.3g
+                      tr
+                        td
+                          .line
+                            .label
+                              | Protein
+                              .weight 11.4g
+                      tr style=("height: 7px")
+                        td bgcolor="#000000"
+                      tr
+            .demo-separator.mdl-cell--1-col
+            .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.consumption-hight
+              .mdl-card__actions.label-set.set-pannel-background
+                h4.panel-text Total Consumption
+              .mdl-card__supporting-text.mdl-color-text--grey-600
+                .consumption--show
+                  | 870
+                  span.consumption-cal Cal
+                h1.cal-show-foot Cal Today
+          .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--8-col
+            .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-bar-hight
+              .mdl-card__actions.label-set
+                h4.panel-text Total Consumption
+              .mdl-card__supporting-text.mdl-color-text--grey-600
+                #bar_chart
+            .demo-separator.mdl-cell--1-col
+            .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop
+              .mdl-card__actions.label-set
+                h4.panel-text Source of Calories
+              .set-pie-hight.mdl-card__supporting-text.mdl-color-text--grey-600
+                #pie_chart.total-consumption
+    script src="../../material.min.js"
