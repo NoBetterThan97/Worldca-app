@@ -32,18 +32,17 @@ class WorldcaApp < Sinatra::Base
 
     slim :foods
   end
-  get '/foods/:name/?' do
-    #group_details = GetGroupDetails.call(params[:name])
-    #if group_details.success?
-    #  group_postings = group_details.value
-    #  @group = GroupDetailsView.new(group_postings)
+  get '/foods/nutrix/:name/?' do
+    result = GetFood.call(params[:name])
+    if result.success?
+      @data = result.value
       slim :food_details
-    #else
-    #  flash[:error] = 'Could not find that group -- we are investigating!'
-    #  redirect '/'
-    #end
+    else
+      flash[:error] = 'Could not find that group -- we are investigating!'
+      redirect '/'
+    end
   end
-  get '/rank/top' do
+  get '/foods/top' do
     criteria = RankCriteria.new(true, 25)
     result = GetRank.call(criteria)
     if result.success?
@@ -53,7 +52,7 @@ class WorldcaApp < Sinatra::Base
     end
     slim :rank
   end
-  get '/rank/less' do
+  get '/foods/less' do
     criteria = RankCriteria.new(false, 25)
     result = GetRank.call(criteria)
     if result.success?
