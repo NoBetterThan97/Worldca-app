@@ -1,7 +1,13 @@
+link href="../../material.min.css" rel="stylesheet" /
+link href="../../styles.css" rel="stylesheet" /
+// Space for Variavble
+- fat_cal = @data.fat*9
+- carbohydrates_cal = @data.carbohydrate*4
+- protein_cal = @data.protein*4
 | <!doctype html
-html lang="en" 
+html lang="en"
   head
-    script src="https://www.gstatic.com/charts/loader.js" type="text/javascript" 
+    script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"
     javascript:
       google.charts.load('current', {'packages':["corechart", "bar"]});
       // Draw the pie chart for Sarah's pizza when Charts is loaded.
@@ -18,11 +24,9 @@ html lang="en"
         data.addColumn('string', 'Nutrition');
         data.addColumn('number', 'Percentage of Calories');
         data.addRows([
-          ['Fat', 1],
-          ['Cholesterol', 1],
-          ['Sodium', 2],
-          ['Carbohydrates', 2],
-          ['Protein', 1]
+          ['Fat', #{@data.fat.delete('g').to_i*9}],
+          ['Carbohydrates', #{@data.carbohydrate.delete('g').to_i*4}],
+          ['Protein', #{@data.protein.delete('g').to_i*4}]
         ]);
 
         // Set options for Sarah's pie chart.
@@ -40,11 +44,11 @@ html lang="en"
         // Create the data table for Anthony's pizza.
         var data = new google.visualization.arrayToDataTable([
           ['Nutrient', 'Percentage'],
-          ["Fat", 44],
-          ["Cholesterol", 31],
-          ["Sodium", 12],
-          ["Carbohydrates", 10],
-          ['Protein', 3]
+          ["Fat", #{@data.fat.delete('g').to_i*100/65}],
+          ["Cholesterol", #{@data.cholesterol.delete('mg').to_i*100/308}],
+          ["Sodium", #{@data.sodium.delete('mg').to_i*100/2390}],
+          ["Carbohydrates", #{@data.carbohydrate.delete('g').to_i*100/295}],
+          ["Protein", #{@data.protein.delete('g').to_i*100/70}]
         ]);
 
         // Set options for Anthony's pie chart.
@@ -59,7 +63,6 @@ html lang="en"
           },
           bar: { groupWidth: "90%" }
         };
-
         // Instantiate and draw the chart for Anthony's pizza.
         var chart = new google.charts.Bar(document.getElementById('bar_chart'));
         chart.draw(data, options);
@@ -71,14 +74,14 @@ html lang="en"
           .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid.set-name
             .mdl-layout__header-row
               span.android-title.mdl-layout-title.set-food-image
-                img alt="" height="100" src="http://icons.iconarchive.com/icons/sonya/swarm/256/Fast-Food-icon.png" width="100" /
+                img alt="" height="100" src="#{@data.image_url}" width="100" /
               .set-food-title
-                h1 Apple
+                h1 #{@data.name}
           .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--4-col
             .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-pannel
               .mdl-card__supporting-text.mdl-color-text--grey-600
                 #nutritionfacts
-                  table cellpadding="0" cellspacing="0" width="242" 
+                  table cellpadding="0" cellspacing="0" width="242"
                     tbody
                       tr
                         td.header align="center"  Nutrition Facts
@@ -86,91 +89,89 @@ html lang="en"
                         td
                           .serving
                             | Per
-                            span.highlighted 180.0g
-                            | Serving Size
-                      tr style=("height: 7px") 
-                        td bgcolor="#000000" 
+                            span.highlighted #{@data.serving_weight} g
+                            | Serving Size:
+                            span.highlighted #{@data.serving_unit}
+                      tr style=("height: 7px")
+                        td bgcolor="#000000"
                       tr
-                        td style=("font-size: 7pt") 
+                        td style=("font-size: 7pt")
                           .line Amount Per Serving
                       tr
                         td
                           .line
                             .label
-                              | Calories
-                              .weight 230
-                            .labellight style=("padding-top: 1px; float: right;") 
-                              | Calories from Fat
-                              .weight 56
+                              | Calories &nbsp
+                              .weight #{@data.calories}
+                            .labellight style=("padding-top: 1px; float: right;")
+                              | Calories from Fat #{@data.fat.to_i*4}
+                              .weight
                       tr
                         td
                           .line
-                            .dvlabel
-                              | \% Daily Value
+                            .dvlabel align="right"
+                              | % Daily Value
                               sup *
                       tr
                         td
                           .line
                             .label
-                              | Total Fat
-                              .weight 6.2g
-                            .dv 10%
+                              | Total Fat &nbsp
+                              .weight #{@data.fat}
+                            .dv #{@data.fat.delete('g').to_i*100/65}%
                       tr
                         td.indent
                           .line
                             .labellight
-                              | Saturated Fat
-                              .weight 3.5g
-                            .dv 17%
+                              | &nbsp Saturated Fat &nbsp
+                              .weight #{@data.saturated_fat}
+                            .dv #{@data.saturated_fat.delete('g').to_i*100/20}%
+                      tr
+                        td
+                          .line
+                            .label
+                              | Cholesterol &nbsp
+                              .weight #{@data.cholesterol}
+                            .dv #{@data.cholesterol.delete('mg').to_i*100/308}%
+                      tr
+                        td
+                          .line
+                            .label
+                              | Sodium &nbsp
+                              .weight #{@data.sodium}
+                            .dv #{@data.sodium.delete('mg').to_i*100/2390}%
+                      tr
+                        td
+                          .line
+                            .label
+                              | Total Carbohydrates &nbsp
+                              .weight #{@data.carbohydrate}
+                            .dv #{@data.carbohydrate.delete('g').to_i*100/295}%
                       tr
                         td.indent
                           .line
                             .labellight
-                              i Trans
-                              | Fat
-                              .weight 0.0g
-                      tr
-                        td
-                          .line
-                            .label
-                              | Cholesterol
-                              .weight 22mg
-                            .dv 7%
-                      tr
-                        td
-                          .line
-                            .label
-                              | Sodium
-                              .weight 618mg
-                            .dv 26%
-                      tr
-                        td
-                          .line
-                            .label
-                              | Total Carbohydrates
-                              .weight 32.2g
-                            .dv 11%
+                              | Dietary Fiber &nbsp
+                              .weight #{@data.dietary_fiber}
+                            .dv #{@data.dietary_fiber.delete('g').to_i*100/25}%
                       tr
                         td.indent
                           .line
                             .labellight
-                              | Dietary Fiber
-                              .weight 5.2g
-                            .dv 21%
-                      tr
-                        td.indent
-                          .line
-                            .labellight
-                              | Sugars
-                              .weight 3.3g
+                              | Sugars &nbsp
+                              .weight #{@data.sugars}
                       tr
                         td
                           .line
                             .label
-                              | Protein
-                              .weight 11.4g
-                      tr style=("height: 7px") 
-                        td bgcolor="#000000" 
+                              | Protein &nbsp
+                              .weight #{@data.protein}
+                            .dv #{@data.protein.delete('g').to_i*100/70}%
+                      tr style=("height: 7px")
+                        td bgcolor="#000000"
+                      tr
+                        td
+                         .weight * Percent Daily Values are based on a 2000 calorie diet.
                       tr
             .demo-separator.mdl-cell--1-col
             .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.consumption-hight
@@ -178,7 +179,7 @@ html lang="en"
                 h4.panel-text Total Consumption
               .mdl-card__supporting-text.mdl-color-text--grey-600
                 .consumption--show
-                  | 870
+                  | #{@data.calories.to_i*@data.tag_amount.to_i}
                   span.consumption-cal Cal
                 h1.cal-show-foot Cal Today
           .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--8-col
@@ -193,4 +194,4 @@ html lang="en"
                 h4.panel-text Source of Calories
               .set-pie-hight.mdl-card__supporting-text.mdl-color-text--grey-600
                 #pie_chart.total-consumption
-    script src="../../material.min.js" 
+    script src="../../material.min.js"

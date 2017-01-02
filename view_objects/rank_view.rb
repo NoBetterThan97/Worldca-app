@@ -13,7 +13,7 @@ class RankDescriptionView
   def initialize(food)
     @id = food.id
     @name = food.name
-    @photo = food.image_url
+    @image_url = food.image_url
     @tag_amount = food.tag_amount
   end
 end

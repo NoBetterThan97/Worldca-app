@@ -1,4 +1,4 @@
-html lang="en" 
+html lang="en"
   body
     .demo-layout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
       main.mdl-layout__content.mdl-color--grey-100
@@ -6,7 +6,7 @@ html lang="en"
           .set-page-height.mdl-shadow--2dp.mdl-color--white.mdl-cell.mdl-cell--8-col
             .mdl-card__supporting-text
               h3 The World have Consumed
-            .cal-show 870
+            .cal-show #{@data_Daily_Consumed}
             h1.cal-show-foot Cal Today
           .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing
             .set-page-height.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop
@@ -25,48 +25,17 @@ html lang="en"
                               th Food
                               th Rank
                           tbody.table_text
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="http://icons.iconarchive.com/icons/sonya/swarm/256/Fast-Food-icon.png" width="40" /
-                              td
-                                | Apple
-                                br/
-                                span.tag-show 1234 tags
-                              td #1
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="http://icons.iconarchive.com/icons/sonya/swarm/256/Fast-Food-icon.png" width="40" /
-                              td
-                                | Cheese Cake
-                                br/
-                                span.tag-show 1114 tags
-                              td #2
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="http://pngimg.com/upload/orange_PNG791.png" width="40" /
-                              td
-                                | Orange
-                                br/
-                                span.tag-show 1100 tags
-                              td #3
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="http://67.media.tumblr.com/ae0440f14193d9b841168aac6370a0bf/tumblr_mmljurAv661ryt4lgo1_500.png" width="40" /
-                              td
-                                | Pine Apple
-                                br/
-                                span.tag-show 900 tags
-                              td #4
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Chocolate(bgFFF).jpg/250px-Chocolate(bgFFF).jpg" width="40" /
-                              td
-                                | Chocolate
-                                br/
-                                span.tag-show 804 tags
-                              td #5
+                            - @data_top&.foods&.each&.with_index do |food, index|
+                              tr class="foods_row"
+                                td.mdl-data-table__cell--non-numeric
+                                  img alt="" height="40" src="#{food.image_url}" width="40" id="food[#{index}].image"/
+                                td
+                                  a href="/food/nutrix/#{food.name}" id="food[#{index}].link" #{food.name}
+                                  br/
+                                  span.tag-show id="food[#{index}].tag" #{food.tag_amount}
+                                td # #{index+1}
                         .mdl-card__actions.mdl-card--border.learn_more
-                          button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect Learn More
+                          button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect onclick="location.href='/foods/top25'"  Learn More
                       #tab2-panel.mdl-tabs__panel
                         table.center.mdl-data-table.mdl-js-data-table.set-table-outline
                           thead
@@ -75,46 +44,15 @@ html lang="en"
                               th Food
                               th Rank
                           tbody.table_text
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="http://www.clipartlord.com/wp-content/uploads/2014/12/onion6.png" width="40" /
-                              td
-                                | Onion
-                                br/
-                                span.tag-show 134 tags
-                              td #1
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="http://www.seriouseats.com/images/2016/01/20160106-beans-vicky-wasik-1.jpg" width="40" /
-                              td
-                                | Beans
-                                br/
-                                span.tag-show 204 tags
-                              td #2
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="http://www.newlife101.com.tw/uploads/image/art_wpqyf2wnp8.jpg" width="40" /
-                              td
-                                | Sweet Patato Leaves
-                                br/
-                                span.tag-show 240 tags
-                              td #3
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="http://67.media.tumblr.com/ae0440f14193d9b841168aac6370a0bf/tumblr_mmljurAv661ryt4lgo1_500.png" width="40" /
-                              td
-                                | Pine Apple
-                                br/
-                                span.tag-show 900 tags
-                              td #4
-                            tr
-                              td.mdl-data-table__cell--non-numeric
-                                img alt="" height="40" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Chocolate(bgFFF).jpg/250px-Chocolate(bgFFF).jpg" width="40" /
-                              td
-                                | Chocolate
-                                br/
-                                span.tag-show 804 tags
-                              td #5
+                            - @data_less&.foods&.each&.with_index do |food, index|
+                              tr class="foods_row"
+                                td.mdl-data-table__cell--non-numeric
+                                  img alt="" height="40" src="#{food.image_url}" width="40" id="food[#{index}].image" /
+                                  td
+                                    a href="/food/nutrix/#{food.name}" id="food[#{index}].link" #{food.name}
+                                    br/
+                                    span.tag-show id="food[#{index}].tag" #{food.tag_amount}
+                                  td # #{index+1}
                         .mdl-card__actions.mdl-card--border.learn_more
-                          button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect Learn More
-    script src="../../material.min.js" 
+                          button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect onclick="location.href='/foods/less25'"  Learn More
+    script src="material.min.css"
