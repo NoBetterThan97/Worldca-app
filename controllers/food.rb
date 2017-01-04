@@ -1,5 +1,3 @@
-
-
 # frozen_string_literal: true
 require 'json'
 
@@ -32,7 +30,7 @@ class WorldcaApp < Sinatra::Base
 
     slim :foods
   end
-  get '/foods/nutrix/:name/?' do
+  get '/food/nutrix/:name/?' do
     result = GetFood.call(params[:name])
     if result.success?
       @data = result.value
@@ -52,18 +50,6 @@ class WorldcaApp < Sinatra::Base
     end
     slim :rank
   end
-<<<<<<< HEAD
-  get '/foods/:name/?' do
-    #group_details = GetGroupDetails.call(params[:name])
-    #if group_details.success?
-    #  group_postings = group_details.value
-    #  @group = GroupDetailsView.new(group_postings)
-      slim :food_details
-    #else
-    #  flash[:error] = 'Could not find that group -- we are investigating!'
-    #  redirect '/'
-    #end
-=======
   get '/foods/less' do
     criteria = RankCriteria.new(false, 25)
     result = GetRank.call(criteria)
@@ -73,6 +59,5 @@ class WorldcaApp < Sinatra::Base
       flash[:error] = result.value.message
     end
     slim :rank
->>>>>>> c24ce5016b3fbc521bd594e91317369ea4589246
   end
 end

@@ -245,15 +245,15 @@ height: 450px;
           align-items: center;
 }
 .cal-show {
-  font-size: 170px;
+  font-size: 130px;
   padding-top: 100px;
-  padding-left: 100px;
+  padding-left: 30px;
 }
 
 .cal-show-foot {
   font-size: 30px;
   padding-top: 100px;
-  padding-left: 400px;
+  padding-left: 500px;
 
   color:rgba(0,0,0,.54);
 }
@@ -395,6 +395,7 @@ padding-top: 50px;}
   width:600px;
   height:500px;
   margin-left: 150px;
+  margin-top: -40px;
 }
 .align-pannel{
   width: 350px;
@@ -423,3 +424,20 @@ font-size: 50px;
 .set-pannel-background{
 background-color: #5cb85c;
 }
+
+.rank-top{
+  font-size: 20px !important;
+}
+
+.rank-text{font-size: 18px;
+  color: black;
+  text-align: center !important;
+  vertical-align: middle !important;}
+
+  .set-rank-title{padding-left: 300px;
+  padding-top: 50px;}
+
+  .set-foot-height{height: 100px;}
+  .top-page-title {
+    max-width: 1080px;
+  }

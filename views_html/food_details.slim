@@ -74,9 +74,9 @@ html lang="en"
           .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid.set-name
             .mdl-layout__header-row
               span.android-title.mdl-layout-title.set-food-image
-                img alt="" height="100" src="#{@data.image_url}" width="100" /
+                img alt="" height="80" src="#{@data.image_url}" width="80" /
               .set-food-title
-                h1 #{@data.name}
+                h1 #{@data.name.capitalize}
           .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--4-col
             .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-pannel
               .mdl-card__supporting-text.mdl-color-text--grey-600
@@ -185,7 +185,7 @@ html lang="en"
           .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--8-col
             .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-bar-hight
               .mdl-card__actions.label-set
-                h4.panel-text Total Consumption
+                h4.panel-text Suggesting Daily Consumption(%)
               .mdl-card__supporting-text.mdl-color-text--grey-600
                 #bar_chart
             .demo-separator.mdl-cell--1-col
@@ -194,4 +194,5 @@ html lang="en"
                 h4.panel-text Source of Calories
               .set-pie-hight.mdl-card__supporting-text.mdl-color-text--grey-600
                 #pie_chart.total-consumption
+            footer.mdl-mini-footer.mdl-color--grey-100.set-foot-height
     script src="../../material.min.js"
