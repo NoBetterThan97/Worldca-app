@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 # Page object for detail page view (food_details)
-class FoodDetailsPage
+class FoodRanksPage
   include PageObject
 
   page_url 'http://localhost:9000/foods/top'
 
-  h1(:detail_title, id: 'detail_title')
+  h1(:rank_title, id: 'rank_title')
   table(:details_table, class: 'center.mdl-data-table.mdl-js-data-table')
   indexed_property(
     :foods,
