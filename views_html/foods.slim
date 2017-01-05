@@ -16,7 +16,6 @@ html lang="en"
                     .mdl-tabs.mdl-js-tabs
                       .mdl-tabs__tab-bar
                         a.mdl-tabs__tab.is-active href="#tab1-panel"  Top 25
-                        a.mdl-tabs__tab href="#tab2-panel"  Less 25
                       #tab1-panel.mdl-tabs__panel.is-active
                         table.center.mdl-data-table.mdl-js-data-table.set-table-outline
                           thead
@@ -30,29 +29,10 @@ html lang="en"
                                 td.mdl-data-table__cell--non-numeric
                                   img alt="" height="40" src="#{food.image_url}" width="40" id="food[#{index}].image"/
                                 td
-                                  a href="/food/nutrix/#{food.name}" id="food[#{index}].link" #{food.name}
+                                  a href="/foods/nutrix/#{food.name}" id="food[#{index}].link" #{food.name}
                                   br/
                                   span.tag-show id="food[#{index}].tag" #{food.tag_amount}
                                 td # #{index+1}
                         .mdl-card__actions.mdl-card--border.learn_more
                           button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect onclick="location.href='/foods/top'"  Learn More
-                      #tab2-panel.mdl-tabs__panel
-                        table.center.mdl-data-table.mdl-js-data-table.set-table-outline
-                          thead
-                            tr
-                              th.mdl-data-table__cell--non-numeric Photo
-                              th Food
-                              th Rank
-                          tbody.table_text
-                            - @data_less&.foods&.each&.with_index do |food, index|
-                              tr class="foods_row"
-                                td.mdl-data-table__cell--non-numeric
-                                  img alt="" height="40" src="#{food.image_url}" width="40" id="food[#{index}].image" /
-                                  td
-                                    a href="/food/nutrix/#{food.name}" id="food[#{index}].link" #{food.name}
-                                    br/
-                                    span.tag-show id="food[#{index}].tag" #{food.tag_amount}
-                                  td # #{index+1}
-                        .mdl-card__actions.mdl-card--border.learn_more
-                          button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect onclick="location.href='/foods/less25'"  Learn More
     script src="material.min.css"
