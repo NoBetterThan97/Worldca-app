@@ -28,7 +28,3 @@ end
 def top_page
   "#{HOST}/foods/top"
 end
-
-def less_page
-  "#{HOST}/foods/less"
-end

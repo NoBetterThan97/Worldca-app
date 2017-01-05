@@ -7,8 +7,8 @@ body
       .mdl-grid.demo-content
         .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid.set-name
           .mdl-layout__header-row
-            .set-rank-title 
-              h1 TOP 25
+            .set-rank-title
+              h1#detail_title TOP 25
         .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--12-col
           .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop
             .mdl-card__supporting-text.mdl-color-text--grey-600
@@ -23,11 +23,10 @@ body
                   - @data&.foods&.each&.with_index do |food, index|
                     tr
                       td.mdl-data-table__cell--non-numeric
-                        img alt="" height="40" src="#{food.image_url}" width="40" /
+                        img alt="" height="40" src="#{food.image_url}" width="40" id="food[#{index}].image"/
                       td
-                        a href="/food/nutrix/#{food.name}"  #{food.name}
-
-                      td #{food.tag_amount}
+                        a href="/foods/nutrix/#{food.name}" id="food[#{index}].link" #{food.name}
+                      td id="food[#{index}].tag" #{food.tag_amount}
                       td # #{index+1}
       footer.mdl-mini-footer.mdl-color--grey-100.set-foot-height
-  script src="../../material.min.js" 
+  script src="../../material.min.js"

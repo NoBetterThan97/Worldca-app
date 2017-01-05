@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require_relative 'spec_helper'
 
-describe 'Homepage' do
+describe 'Detailspage' do
   before do
     unless @browser
       #@headless = Headless.new
@@ -19,18 +19,16 @@ describe 'Homepage' do
 
     it '(HAPPY) should see website features' do
       # GIVEN: user goes to the home page
-      visit HomePage do |page|
-        # THEN: user should see correct title, header, btn: learn more
+      visit FoodDetailsPage do |page|
+        # THEN: user should see correct title, header
         page.title.must_include 'World Ca'
-        page.heading.must_include 'WorldCa'
-
-        page.learn_more?
+        page.detail_title.must_include 'TOP 25'
       end
     end
 
     it '(HAPPY) should see content' do
       # GIVEN: user goes to the homepage
-      visit HomePage do |page|
+      visit FoodDetailsPage do |page|
         # THEN: user should see a row with group information and links
         page.foods_count.must_be :>=, 0
         page.first_row.food_image_element.wont_be_nil
