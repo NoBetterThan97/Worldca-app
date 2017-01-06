@@ -5,20 +5,20 @@ require 'json'
 class WorldcaApp < Sinatra::Base
   # Home page: show number of courses each resource contains
   get "/?" do
-    criteria = RankCriteria.new(true, 5)
-    result = GetRank.call(criteria)
+    result = GetRank.call(5)
     if result.success?
       @data_top = RankView.new(result.value)
     else
       flash[:error] = result.value.message
     end
 
-    result_daily = GetDailyConsumed.call
-    if result.success?
-      @data_Daily_Consumed = result_daily.value.worldcals
-    else
-      flash[:error] = result.value.message
-    end
+    #result_daily = GetDailyConsumed.call
+    #if result.success?
+      #@data_Daily_Consumed = result_daily.value.worldcals
+      @data_Daily_Consumed = 123
+    #else
+      #flash[:error] = result.value.message
+    #end
 
     slim :foods
   end
@@ -33,8 +33,7 @@ class WorldcaApp < Sinatra::Base
     end
   end
   get '/foods/top' do
-    criteria = RankCriteria.new(true, 25)
-    result = GetRank.call(criteria)
+    result = GetRank.call(25)
     if result.success?
       @data = RankView.new(result.value)
     else

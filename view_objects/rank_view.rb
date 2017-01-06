@@ -3,17 +3,16 @@ class RankView
   attr_reader :foods
 
   def initialize(all_foods)
-    @foods = all_foods.foods.map { |food| RankDescriptionView.new(food) }
+    @foods = all_foods.statistics.map { |food| RankDescriptionView.new(food) }
   end
 end
 
 class RankDescriptionView
-  attr_reader :id, :name, :image_url, :tag_amount
+  attr_reader :name, :image_url, :consumptions
 
-  def initialize(food)
-    @id = food.id
-    @name = food.name
-    @image_url = food.image_url
-    @tag_amount = food.tag_amount
+  def initialize(foods)
+    @name = foods.food.name
+    @image_url = foods.food.image_url
+    @consumptions = foods.consumptions
   end
 end
