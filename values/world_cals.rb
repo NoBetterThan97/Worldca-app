@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-WorldCals = Struct.new :worldcals
+WorldCals = Struct.new :calories

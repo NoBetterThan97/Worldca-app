@@ -4,5 +4,5 @@
 class WorldCalsRepresenter < Roar::Decorator
   include Roar::JSON
 
-  property :worldcals
+  property :calories
 end
