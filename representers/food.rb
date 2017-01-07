@@ -1,7 +1,6 @@
-# frozen_string_literal: true
+require_relative 'post'
 
-# Represents overall group information for JSON API output
-class FoodDetailsRepresenter < Roar::Decorator
+class FoodRepresenter < Roar::Decorator
   include Roar::JSON
 
   property :name
@@ -19,5 +18,6 @@ class FoodDetailsRepresenter < Roar::Decorator
   property :protein
   property :potassium
   property :image_url
-  property :tag_amount
+
+  collection :posts, extend: PostRepresenter, class: Post
 end
