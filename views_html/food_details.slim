@@ -1,9 +1,9 @@
 link href="../../material.min.css" rel="stylesheet" /
 link href="../../styles.css" rel="stylesheet" /
 // Space for Variavble
-- fat_cal = @data.fat*9
-- carbohydrates_cal = @data.carbohydrate*4
-- protein_cal = @data.protein*4
+- fat_cal = @data.food.fat*9
+- carbohydrates_cal = @data.food.carbohydrate*4
+- protein_cal = @data.food.protein*4
 | <!doctype html
 html lang="en"
   head
@@ -29,9 +29,9 @@ html lang="en"
         data.addColumn('string', 'Nutrition');
         data.addColumn('number', 'Percentage of Calories');
         data.addRows([
-          ['Fat', #{@data.fat.delete('g').to_i*9}],
-          ['Carbohydrates', #{@data.carbohydrate.delete('g').to_i*4}],
-          ['Protein', #{@data.protein.delete('g').to_i*4}]
+          ['Fat', #{@data.food.fat.delete('g').to_i*9}],
+          ['Carbohydrates', #{@data.food.carbohydrate.delete('g').to_i*4}],
+          ['Protein', #{@data.food.protein.delete('g').to_i*4}]
         ]);
 
         // Set options for Sarah's pie chart.
@@ -49,11 +49,11 @@ html lang="en"
         // Create the data table for Anthony's pizza.
         var data = new google.visualization.arrayToDataTable([
           ['Nutrient', 'Percentage'],
-          ["Fat", #{@data.fat.delete('g').to_i*100/65}],
-          ["Cholesterol", #{@data.cholesterol.delete('mg').to_i*100/308}],
-          ["Sodium", #{@data.sodium.delete('mg').to_i*100/2390}],
-          ["Carbohydrates", #{@data.carbohydrate.delete('g').to_i*100/295}],
-          ["Protein", #{@data.protein.delete('g').to_i*100/70}]
+          ["Fat", #{@data.food.fat.delete('g').to_i*100/65}],
+          ["Cholesterol", #{@data.food.cholesterol.delete('mg').to_i*100/308}],
+          ["Sodium", #{@data.food.sodium.delete('mg').to_i*100/2390}],
+          ["Carbohydrates", #{@data.food.carbohydrate.delete('g').to_i*100/295}],
+          ["Protein", #{@data.food.protein.delete('g').to_i*100/70}]
         ]);
 
         // Set options for Anthony's pie chart.
@@ -79,9 +79,9 @@ html lang="en"
           .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid.set-name
             .mdl-layout__header-row
               span.android-title.mdl-layout-title.set-food-image
-                img alt="" height="80" src="#{@data.image_url}" width="80" /
+                img alt="" height="80" src="#{@data.food.image_url}" width="80" /
               .set-food-title
-                h1 #{@data.name.capitalize}
+                h1 #{@data.food.name.capitalize}
           .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--4-col
             .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-pannel
               .mdl-card__supporting-text.mdl-color-text--grey-600
@@ -94,9 +94,9 @@ html lang="en"
                         td
                           .serving
                             | Per
-                            span.highlighted #{@data.serving_weight} g
+                            span.highlighted #{@data.food.serving_weight} g
                             | Serving Size:
-                            span.highlighted #{@data.serving_unit}
+                            span.highlighted #{@data.food.serving_unit}
                       tr style=("height: 7px")
                         td bgcolor="#000000"
                       tr
@@ -107,9 +107,9 @@ html lang="en"
                           .line
                             .label
                               | Calories &nbsp
-                              .weight #{@data.calories}
+                              .weight #{@data.food.calories}
                             .labellight style=("padding-top: 1px; float: right;")
-                              | Calories from Fat #{@data.fat.to_i*4}
+                              | Calories from Fat #{@data.food.fat.to_i*4}
                               .weight
                       tr
                         td
@@ -122,56 +122,56 @@ html lang="en"
                           .line
                             .label
                               | Total Fat &nbsp
-                              .weight #{@data.fat}
-                            .dv #{@data.fat.delete('g').to_i*100/65}%
+                              .weight #{@data.food.fat}
+                            .dv #{@data.food.fat.delete('g').to_i*100/65}%
                       tr
                         td.indent
                           .line
                             .labellight
                               | &nbsp Saturated Fat &nbsp
-                              .weight #{@data.saturated_fat}
-                            .dv #{@data.saturated_fat.delete('g').to_i*100/20}%
+                              .weight #{@data.food.saturated_fat}
+                            .dv #{@data.food.saturated_fat.delete('g').to_i*100/20}%
                       tr
                         td
                           .line
                             .label
                               | Cholesterol &nbsp
-                              .weight #{@data.cholesterol}
-                            .dv #{@data.cholesterol.delete('mg').to_i*100/308}%
+                              .weight #{@data.food.cholesterol}
+                            .dv #{@data.food.cholesterol.delete('mg').to_i*100/308}%
                       tr
                         td
                           .line
                             .label
                               | Sodium &nbsp
-                              .weight #{@data.sodium}
-                            .dv #{@data.sodium.delete('mg').to_i*100/2390}%
+                              .weight #{@data.food.sodium}
+                            .dv #{@data.food.sodium.delete('mg').to_i*100/2390}%
                       tr
                         td
                           .line
                             .label
                               | Total Carbohydrates &nbsp
-                              .weight #{@data.carbohydrate}
-                            .dv #{@data.carbohydrate.delete('g').to_i*100/295}%
+                              .weight #{@data.food.carbohydrate}
+                            .dv #{@data.food.carbohydrate.delete('g').to_i*100/295}%
                       tr
                         td.indent
                           .line
                             .labellight
                               | Dietary Fiber &nbsp
-                              .weight #{@data.dietary_fiber}
-                            .dv #{@data.dietary_fiber.delete('g').to_i*100/25}%
+                              .weight #{@data.food.dietary_fiber}
+                            .dv #{@data.food.dietary_fiber.delete('g').to_i*100/25}%
                       tr
                         td.indent
                           .line
                             .labellight
                               | Sugars &nbsp
-                              .weight #{@data.sugars}
+                              .weight #{@data.food.sugars}
                       tr
                         td
                           .line
                             .label
                               | Protein &nbsp
-                              .weight #{@data.protein}
-                            .dv #{@data.protein.delete('g').to_i*100/70}%
+                              .weight #{@data.food.protein}
+                            .dv #{@data.food.protein.delete('g').to_i*100/70}%
                       tr style=("height: 7px")
                         td bgcolor="#000000"
                       tr
@@ -184,7 +184,7 @@ html lang="en"
                 h4.panel-text Total Consumption
               .mdl-card__supporting-text.mdl-color-text--grey-600
                 .consumption--show
-                  | 
+                  |
                   span.consumption-cal Cal
                 h1.cal-show-foot Cal Today
           .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--8-col
