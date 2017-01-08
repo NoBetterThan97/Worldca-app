@@ -44,6 +44,6 @@ html lang="en"
       var options = {useEasing : true, useGrouping : true, separator : '', decimal : '.', prefix : '', suffix : ''};
       var subscription = client.subscribe('/overview', function(message) {
         sum += parseFloat(message);
-        var counter = new CountUp(stats, parseInt(stats.innerHTML), sum, 0, 0.5, options);
+        var counter = new countUp(stats, parseInt(stats.innerHTML), sum, 0, 0.5, options);
         counter.start();
       });
