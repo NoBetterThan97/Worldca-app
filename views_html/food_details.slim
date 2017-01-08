@@ -203,12 +203,13 @@ html lang="en"
                 .demo-updates.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop
           .mdl-card__supporting-text.mdl-color-text--grey-600
             .m-p-g
-            - @data.food.posts.each do |img|
               .m-p-g__thumbs[data-google-image-layout data-max-height="350"]
-                img.set-size.m-p-g__thumbs-img[src="#{img.image_url}" data-full="#{img.image_url}"]
+                - @data.food.posts.each do |img|
+                  img.set-size.m-p-g__thumbs-img[src="#{img.image_url}" data-full="#{img.image_url}"]
               .m-p-g__fullscreen
             script[src="../../dist/js/material-photo-gallery.js"]
             script
-              |  var elem = document.querySelector('.m-p-g'); document.addEventListener('DOMContentLoaded', function() { var gallery = new MaterialPhotoGallery(elem); }); 
+              | var elem = document.querySelector('.m-p-g');
+              | document.addEventListener('DOMContentLoaded', function() { var gallery = new MaterialPhotoGallery(elem); }); 
         footer.mdl-mini-footer.mdl-color--grey-100.set-foot-height
     script src="../../material.min.js"
