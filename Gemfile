@@ -38,6 +38,7 @@ group :test do
   gem 'watir-webdriver'
   gem 'headless'
   gem 'page-object'
+  gem 'selenium-webdriver'
 end
 
 group :development, :production do
