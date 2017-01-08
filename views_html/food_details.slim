@@ -12,7 +12,7 @@ html lang="en"
   head
     script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"
     style
-    |  /* DEMO */ .demo-btn { display: inline-block; margin: 0 2.5px 4vh 2.5px; text-decoration: none; color: grey; padding: 15px; line-height: 1; min-width: 140px; background: rgba(0,0,0, 0.07); border-radius: 6px; } .demo-btn:hover { background: rgba(0,0,0,0.12); } @media (max-width: 640px) { .demo-btn { min-width: 0; font-size: 14px; } } 
+    |  /* DEMO */ .demo-btn { display: inline-block; margin: 0 2.5px 4vh 2.5px; text-decoration: none; color: grey; padding: 15px; line-height: 1; min-width: 140px; background: rgba(0,0,0, 0.07); border-radius: 6px; } .demo-btn:hover { background: rgba(0,0,0,0.12); } @media (max-width: 640px) { .demo-btn { min-width: 0; font-size: 14px; } }
 
     javascript:
       google.charts.load('current', {'packages':["corechart", "bar"]});
@@ -210,6 +210,5 @@ html lang="en"
             script[src="../../dist/js/material-photo-gallery.js"]
             script
               | var elem = document.querySelector('.m-p-g');
-              | document.addEventListener('DOMContentLoaded', function() { var gallery = new MaterialPhotoGallery(elem); }); 
+              | document.addEventListener('DOMContentLoaded', function() { var gallery = new MaterialPhotoGallery(elem); });
         footer.mdl-mini-footer.mdl-color--grey-100.set-foot-height
-    script src="../../material.min.js"
