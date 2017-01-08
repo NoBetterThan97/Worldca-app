@@ -38,7 +38,7 @@ html lang="en"
     script src="material.min.css"
     script src="https://wcapi.herokuapp.com/ws/client.js"
     javascript:
-      var client = new Faye.Client('http://wcapi.herokuapp.com/ws');
+      var client = new Faye.Client('https://wcapi.herokuapp.com/ws');
       var stats = document.querySelector('.cal-show');
       var sum = parseFloat(stats.innerHTML);
       var subscription = client.subscribe('/overview', function(message) {
