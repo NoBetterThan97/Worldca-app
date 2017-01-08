@@ -1,0 +1,215 @@
+link href="../../material.min.css" rel="stylesheet" /
+link href="../../styles.css" rel="stylesheet" /
+link[href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,300" rel="stylesheet" type="text/css"]
+link[rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css"]
+link[rel="stylesheet" href="../../dist/css/material-photo-gallery.css"]
+// Space for Variavble
+- fat_cal = @data.food.fat*9
+- carbohydrates_cal = @data.food.carbohydrate*4
+- protein_cal = @data.food.protein*4
+| <!doctype html
+html lang="en"
+  head
+    script src="https://www.gstatic.com/charts/loader.js" type="text/javascript"
+    style
+    |  /* DEMO */ .demo-btn { display: inline-block; margin: 0 2.5px 4vh 2.5px; text-decoration: none; color: grey; padding: 15px; line-height: 1; min-width: 140px; background: rgba(0,0,0, 0.07); border-radius: 6px; } .demo-btn:hover { background: rgba(0,0,0,0.12); } @media (max-width: 640px) { .demo-btn { min-width: 0; font-size: 14px; } } 
+
+    javascript:
+      google.charts.load('current', {'packages':["corechart", "bar"]});
+      // Draw the pie chart for Sarah's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawCalPieChart);
+
+      // Draw the pie chart for the Anthony's pizza when Charts is loaded.
+      google.charts.setOnLoadCallback(drawDailyBarChart);
+
+      // Callback that draws the pie chart for Sarah's pizza.
+      function drawCalPieChart() {
+
+        // Create the data table for Sarah's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Nutrition');
+        data.addColumn('number', 'Percentage of Calories');
+        data.addRows([
+          ['Fat', #{@data.food.fat.delete('g').to_i*9}],
+          ['Carbohydrates', #{@data.food.carbohydrate.delete('g').to_i*4}],
+          ['Protein', #{@data.food.protein.delete('g').to_i*4}]
+        ]);
+
+        // Set options for Sarah's pie chart.
+        var options = { width:400,
+                       height:300};
+
+        // Instantiate and draw the chart for Sarah's pizza.
+        var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+        chart.draw(data, options);
+      }
+
+      // Callback that draws the pie chart for Anthony's pizza.
+      function drawDailyBarChart() {
+
+        // Create the data table for Anthony's pizza.
+        var data = new google.visualization.arrayToDataTable([
+          ['Nutrient', 'Percentage'],
+          ["Fat", #{@data.food.fat.delete('g').to_i*100/65}],
+          ["Cholesterol", #{@data.food.cholesterol.delete('mg').to_i*100/308}],
+          ["Sodium", #{@data.food.sodium.delete('mg').to_i*100/2390}],
+          ["Carbohydrates", #{@data.food.carbohydrate.delete('g').to_i*100/295}],
+          ["Protein", #{@data.food.protein.delete('g').to_i*100/70}]
+        ]);
+
+        // Set options for Anthony's pie chart.
+        var options = {
+          width: 600,
+          legend: { position: 'none' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Percentage'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+        // Instantiate and draw the chart for Anthony's pizza.
+        var chart = new google.charts.Bar(document.getElementById('bar_chart'));
+        chart.draw(data, options);
+      }
+  body
+    .demo-layout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+      main.mdl-layout__content.mdl-color--grey-100
+        .mdl-grid.demo-content
+          .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid.set-name
+            .mdl-layout__header-row
+              span.android-title.mdl-layout-title.set-food-image
+                img alt="" height="80" src="#{@data.food.image_url}" width="80" /
+              .set-food-title
+                h1 #{@data.food.name.capitalize}
+          .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--4-col
+            .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-pannel
+              .mdl-card__supporting-text.mdl-color-text--grey-600
+                #nutritionfacts
+                  table cellpadding="0" cellspacing="0" width="242"
+                    tbody
+                      tr
+                        td.header align="center"  Nutrition Facts
+                      tr
+                        td
+                          .serving
+                            | Per
+                            span.highlighted #{@data.food.serving_weight} g
+                            | Serving Size:
+                            span.highlighted #{@data.food.serving_unit}
+                      tr style=("height: 7px")
+                        td bgcolor="#000000"
+                      tr
+                        td style=("font-size: 7pt")
+                          .line Amount Per Serving
+                      tr
+                        td
+                          .line
+                            .label
+                              | Calories &nbsp
+                              .weight #{@data.food.calories}
+                            .labellight style=("padding-top: 1px; float: right;")
+                              | Calories from Fat #{@data.food.fat.to_i*4}
+                              .weight
+                      tr
+                        td
+                          .line
+                            .dvlabel align="right"
+                              | % Daily Value
+                              sup *
+                      tr
+                        td
+                          .line
+                            .label
+                              | Total Fat &nbsp
+                              .weight #{@data.food.fat}
+                            .dv #{@data.food.fat.delete('g').to_i*100/65}%
+                      tr
+                        td.indent
+                          .line
+                            .labellight
+                              | &nbsp Saturated Fat &nbsp
+                              .weight #{@data.food.saturated_fat}
+                            .dv #{@data.food.saturated_fat.delete('g').to_i*100/20}%
+                      tr
+                        td
+                          .line
+                            .label
+                              | Cholesterol &nbsp
+                              .weight #{@data.food.cholesterol}
+                            .dv #{@data.food.cholesterol.delete('mg').to_i*100/308}%
+                      tr
+                        td
+                          .line
+                            .label
+                              | Sodium &nbsp
+                              .weight #{@data.food.sodium}
+                            .dv #{@data.food.sodium.delete('mg').to_i*100/2390}%
+                      tr
+                        td
+                          .line
+                            .label
+                              | Total Carbohydrates &nbsp
+                              .weight #{@data.food.carbohydrate}
+                            .dv #{@data.food.carbohydrate.delete('g').to_i*100/295}%
+                      tr
+                        td.indent
+                          .line
+                            .labellight
+                              | Dietary Fiber &nbsp
+                              .weight #{@data.food.dietary_fiber}
+                            .dv #{@data.food.dietary_fiber.delete('g').to_i*100/25}%
+                      tr
+                        td.indent
+                          .line
+                            .labellight
+                              | Sugars &nbsp
+                              .weight #{@data.food.sugars}
+                      tr
+                        td
+                          .line
+                            .label
+                              | Protein &nbsp
+                              .weight #{@data.food.protein}
+                            .dv #{@data.food.protein.delete('g').to_i*100/70}%
+                      tr style=("height: 7px")
+                        td bgcolor="#000000"
+                      tr
+                        td
+                         .weight * Percent Daily Values are based on a 2000 calorie diet.
+                      tr
+            .demo-separator.mdl-cell--1-col
+            .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.consumption-hight
+              .mdl-card__actions.label-set.set-pannel-background
+                h4.panel-text Total Consumption
+              .mdl-card__supporting-text.mdl-color-text--grey-600
+                .consumption--show
+                  |
+                  span.consumption-cal align="center" #{@data.consumptions*@data.food.calories.to_i} Cal
+                h1.cal-show-foot Cal Today
+          .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--8-col
+            .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-bar-hight
+              .mdl-card__actions.label-set
+                h4.panel-text Suggesting Daily Consumption(%)
+              .mdl-card__supporting-text.mdl-color-text--grey-600
+                #bar_chart
+            .demo-separator.mdl-cell--1-col
+            .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop
+              .mdl-card__actions.label-set
+                h4.panel-text Source of Calories
+              .set-pie-hight.mdl-card__supporting-text.mdl-color-text--grey-600
+                #pie_chart.total-consumption
+                .demo-updates.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop
+          .mdl-card__supporting-text.mdl-color-text--grey-600
+            .m-p-g
+              .m-p-g__thumbs[data-google-image-layout data-max-height="350"]
+                - @data.food.posts.each do |img|
+                  img.set-size.m-p-g__thumbs-img[src="#{img.image_url}" data-full="#{img.image_url}"]
+              .m-p-g__fullscreen
+            script[src="../../dist/js/material-photo-gallery.js"]
+            script
+              | var elem = document.querySelector('.m-p-g');
+              | document.addEventListener('DOMContentLoaded', function() { var gallery = new MaterialPhotoGallery(elem); }); 
+        footer.mdl-mini-footer.mdl-color--grey-100.set-foot-height
+    script src="../../material.min.js"

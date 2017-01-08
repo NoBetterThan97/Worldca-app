@@ -1,0 +1,32 @@
+link href="../../material.min.css" rel="stylesheet" /
+link href="../../styles.css" rel="stylesheet" /
+html lang="en"
+body
+  .demo-layout.mdl-layout.mdl-js-layout.mdl-layout--fixed-header
+    main.mdl-layout__content.mdl-color--grey-100
+      .mdl-grid.demo-content
+        .demo-charts.mdl-color--white.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col.mdl-grid.set-name
+          .mdl-layout__header-row
+            .set-rank-title
+              h1#rank_title TOP 25
+        .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--12-col
+          .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop
+            .mdl-card__supporting-text.mdl-color-text--grey-600
+              table.center.mdl-data-table.mdl-js-data-table.set-table-outline.mdl-cell--12-col
+                thead
+                  tr
+                    th.mdl-data-table__cell--non-numeric.rank-top Photo
+                    th.rank-top Food
+                    th.rank-top Tags
+                    th.rank-top Rank
+                tbody.rank-text
+                  - @data&.foods&.each&.with_index do |food, index|
+                    tr
+                      td.mdl-data-table__cell--non-numeric
+                        img alt="" height="40" src="#{food.image_url}" width="40" id="food[#{index}].image"/
+                      td
+                        a href="/foods/nutrix/#{food.name}" id="food[#{index}].link" #{food.name}
+                      td id="food[#{index}].consumptions" #{food.consumptions}
+                      td # #{index+1}
+      footer.mdl-mini-footer.mdl-color--grey-100.set-foot-height
+  script src="../../material.min.js"

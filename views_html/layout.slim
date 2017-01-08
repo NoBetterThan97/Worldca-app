@@ -1,0 +1,32 @@
+head
+  meta charset="utf-8" /
+  meta content="IE=edge" http-equiv="X-UA-Compatible" /
+  meta content="width=device-width, initial-scale=1" name="viewport" /
+  title World Ca
+  /! Add to homescreen for Chrome on Android
+  meta content="yes" name="mobile-web-app-capable" /
+  link href="images/android-desktop.png" rel="icon" sizes="192x192" /
+  /! Add to homescreen for Safari on iOS
+  meta content="yes" name="apple-mobile-web-app-capable" /
+  meta content="black" name="apple-mobile-web-app-status-bar-style" /
+  meta content=("Material Design Lite") name="apple-mobile-web-app-title" /
+  link href="images/ios-desktop.png" rel="apple-touch-icon-precomposed" /
+  /! Tile icon for Win8 (144x144 + tile color)
+  meta content="images/touch/ms-touch-icon-144x144-precomposed.png" name="msapplication-TileImage" /
+  meta content="#3372DF" name="msapplication-TileColor" /
+  link href="images/favicon.png" rel=("shortcut icon") /
+  /! SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones
+  /!
+    | <link rel="canonical" href="http://www.example.com/"
+  link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet" /
+  link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
+  link href="material.min.css" rel="stylesheet" type="text/css"/
+  link href="styles.css" rel="stylesheet" type="text/css" /
+  link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" /
+  link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" type="text/css" /
+  script defer="" src="https://code.getmdl.io/1.3.0/material.min.js"
+
+  body
+    == slim :nav
+    == slim :flash_bar
+    == yield

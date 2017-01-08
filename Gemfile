@@ -10,6 +10,7 @@ gem 'rake'
 gem 'slim'
 gem 'rack-flash3'
 
+
 gem 'http'
 
 gem 'roar'
@@ -34,6 +35,10 @@ group :test do
 
   gem 'vcr'
   gem 'webmock'
+  gem 'watir-webdriver'
+  gem 'headless'
+  gem 'page-object'
+  gem 'selenium-webdriver'
 end
 
 group :development, :production do
