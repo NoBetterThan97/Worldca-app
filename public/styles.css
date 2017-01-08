@@ -441,3 +441,8 @@ background-color: #5cb85c;
   .top-page-title {
     max-width: 1080px;
   }
+
+  .set-size{
+    max-width: 400px;
+    max-height: 400px;
+  }
