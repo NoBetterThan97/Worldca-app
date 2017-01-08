@@ -186,7 +186,7 @@ html lang="en"
               .mdl-card__supporting-text.mdl-color-text--grey-600
                 .consumption--show
                   |
-                  span.consumption-cal Cal
+                  span.consumption-cal align="center" #{@data.consumptions*@data.food.calories.to_i} Cal
                 h1.cal-show-foot Cal Today
           .demo-cards.mdl-cell.mdl-cell--4-col.mdl-cell--8-col-tablet.mdl-grid.mdl-grid--no-spacing.mdl-cell--8-col
             .demo-updates.mdl-card.mdl-shadow--2dp.mdl-cell.mdl-cell--4-col.mdl-cell--4-col-tablet.mdl-cell--12-col-desktop.set-bar-hight

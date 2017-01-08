@@ -12,13 +12,13 @@ class WorldcaApp < Sinatra::Base
       flash[:error] = result.value.message
     end
 
-    #result_daily = GetDailyConsumed.call
-    #if result.success?
-      #@data_Daily_Consumed = result_daily.value.worldcals
-      @data_Daily_Consumed = 123
-    #else
-      #flash[:error] = result.value.message
-    #end
+    result_daily = GetDailyConsumed.call
+    if result.success?
+      @data_Daily_Consumed = result_daily.value.calories.to_i
+      #@data_Daily_Consumed = 123
+    else
+      flash[:error] = result.value.message
+    end
 
     slim :foods
   end
