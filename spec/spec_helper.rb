@@ -16,7 +16,7 @@ require_relative 'pages/init.rb'
 #INVALID_GROUP_URL = 'https://www.facebook.com/groups/that_does_not_exist404'
 #BAD_GROUP_URL = 'htt://www.facebook'
 
-HOST = 'http://localhost:9000/'
+HOST = 'http://worldca.herokuapp.com/'
 # Helper methods
 def homepage
   HOST

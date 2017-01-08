@@ -16,7 +16,7 @@ class HomePage
     [
       [:img, :food_image, { id: 'food[%s].image' }],
       [:a, :food_link, { id: 'food[%s].link' }],
-      [:span, :food_tag, { id: 'food[%s].tag' }]
+      [:span, :food_tag, { id: 'food[%s].consumptions' }]
     ]
   )
 

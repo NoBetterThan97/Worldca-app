@@ -13,7 +13,7 @@ class FoodRanksPage
     [
       [:img, :food_image, { id: 'food[%s].image' }],
       [:a, :food_link, { id: 'food[%s].link' }],
-      [:td, :food_tag, { id: 'food[%s].tag' }]
+      [:td, :food_tag, { id: 'food[%s].consumptions' }]
     ]
   )
 
