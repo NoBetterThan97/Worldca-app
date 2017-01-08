@@ -187,6 +187,7 @@ DEPENDENCIES
   rake
   rerun
   roar
+  selenium-webdriver
   sinatra
   slim
   tux
