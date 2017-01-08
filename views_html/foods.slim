@@ -36,3 +36,12 @@ html lang="en"
                         .mdl-card__actions.mdl-card--border.learn_more
                           button.mdl-button.mdl-button--colored.mdl-js-button.mdl-js-ripple-effect onclick="location.href='/foods/top'"  Learn More
     script src="material.min.css"
+    script src="https://wcapi.herokuapp.com/ws/client.js"
+    javascript:
+      var client = new Faye.Client('http://wcapi.herokuapp.com/ws');
+      var stats = document.querySelector('.cal-show');
+      var sum = parseFloat(stats.innerHTML);
+      var subscription = client.subscribe('/overview', function(message) {
+        sum += parseFloat(message);
+        stats.innerHTML = parseInt(sum);
+      });
