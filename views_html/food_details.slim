@@ -222,6 +222,6 @@ html lang="en"
         var currentCals = parseFloat(consumption.innerHTML.replace('Cal', ''));
         consumption.innerHTML = parseInt(currentCals + cals)+ ' Cal';
         var post = JSON.parse(message);
-        var img_tag = "<img class="set-size m-p-g__thumbs-img data-full="' + post.image_url + '" src="' + post.image_url + '">"';
+        var img_tag = '"<img class="set-size m-p-g__thumbs-img data-full="' + post.image_url + '" src="' + post.image_url + '">"';
         container.insertBefore(img_tag, container.firstChild);
       });
