@@ -223,7 +223,9 @@ html lang="en"
         consumption.innerHTML = parseInt(currentCals + cals)+ ' Cal';
         var post = JSON.parse(message);
         var temp = document.createElement('div');
-        temp.innerHTML = '"<img class="set-size m-p-g__thumbs-img data-full="' + post.image_url + '" src="' + post.image_url + '">"';
+        var tag = '"<img class="set-size m-p-g__thumbs-img data-full="' + post.image_url + '" src="' + post.image_url + '">"';
+        console.log(tag);
+        temp.innerHTML = tag;
         var img_tag = temp.childNodes[0];
         container.insertBefore(img_tag, container.firstChild);
       });
