@@ -212,3 +212,9 @@ html lang="en"
               | var elem = document.querySelector('.m-p-g');
               | document.addEventListener('DOMContentLoaded', function() { var gallery = new MaterialPhotoGallery(elem); });
         footer.mdl-mini-footer.mdl-color--grey-100.set-foot-height
+    script src="https://wcapi.herokuapp.com/ws/client.js"
+    javascript:
+      var client = new Faye.Client('https://wcapi.herokuapp.com/ws');
+      var subscription = client.subscribe('/#{@data.food.name}', function(message) {
+        console.log(message);  
+      });
