@@ -204,7 +204,7 @@ html lang="en"
           .mdl-card__supporting-text.mdl-color-text--grey-600
             .m-p-g
               .m-p-g__thumbs[data-google-image-layout data-max-height="350"]
-                - @data.food.posts.each do |img|
+                - @data.food.posts.reverse.each do |img|
                   img.set-size.m-p-g__thumbs-img[src="#{img.image_url}" data-full="#{img.image_url}"]
               .m-p-g__fullscreen
             script[src="../../dist/js/material-photo-gallery.js"]
@@ -215,6 +215,13 @@ html lang="en"
     script src="https://wcapi.herokuapp.com/ws/client.js"
     javascript:
       var client = new Faye.Client('https://wcapi.herokuapp.com/ws');
+      var container = document.querySelector('.m-p-g__thumbs');
+      var consumption = document.querySelector('.consumption-cal');
+      var cals = parseFloat('#{@data.food.calories}');
       var subscription = client.subscribe('/#{@data.food.name}', function(message) {
-        console.log(message);  
+        var currentCals = parseFloat(consumption.innerHTML.replace('Cal', ''));
+        consumption.innerHTML = parseInt(currentCals + cals)+ ' Cal';
+        var post = JSON.parse(message);
+        var img_tag = "<img class="set-size m-p-g__thumbs-img data-full="' + post.image_url + '" src="' + post.image_url + '">"';
+        container.insertBefore(img_tag, container.firstChild);
       });
