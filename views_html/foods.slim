@@ -41,7 +41,6 @@ html lang="en"
       var stats = document.querySelector('.cal-show');
       var sum = parseFloat(stats.innerHTML);
       var subscription = client.subscribe('/overview', function(message) {
-        console.log(message);
         sum += parseFloat(message);
-        stats.innerHTML = parseInt(stats.innerHTML);
+        stats.innerHTML = parseInt(sum);
       });
