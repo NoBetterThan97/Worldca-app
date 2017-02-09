@@ -1098,7 +1098,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 	  },
 	  transitionendString,
 	  elem = document.createElement('div');
-	 
+
   for (var t in transitions) {
     if (typeof elem.style[t] !== 'undefined') {
       transitionendString = transitions[t];
@@ -1182,8 +1182,8 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 				}
 			});
 
-			alertBoxMessage.innerHTML = 'Failed to load:' + ' ' + brokenImages;
-			
+			//alertBoxMessage.innerHTML = 'Failed to load:' + ' ' + brokenImages;
+
 		});
 
 		window.onresize = debounce(function() {
@@ -1268,7 +1268,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 	};
 
 	Gallery.prototype._handleScroll = debounce(function() {
-		if (this._fullImgsLoaded) this._resetFullImg.call(this);	
+		if (this._fullImgsLoaded) this._resetFullImg.call(this);
 	}, 25);
 
 	Gallery.prototype._handleResize = function() {
@@ -1303,32 +1303,34 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 			this._fullBox.appendChild(img);
 		}
 
-		this._loadFullImgsDone.call(this);		
+		this._loadFullImgsDone.call(this);
 	};
 
 	Gallery.prototype._loadFullImgsDone = function() {
 
 		var imgLoad = imagesLoaded(this._fullBox);
-		
+
 		imgLoad.on('always', function(instance) {
 
 			var imgArr = instance.images;
 
 			imgArr.forEach(function(img) {
-				if (!img.isLoaded) console.error(img.img.src + ' ' + 'failed to load.');
+				if (!img.isLoaded)
+        //console.error(img.img.src + ' ' + 'failed to load.');
 			});
-			
+
 			this._fullImgs = [];
 			this._fullImgDimensions = [];
 			this._fullImgsTransforms = [];
 
 			for (var i = 0, ii = imgArr.length; i < ii; i++) {
-				var rect = imgArr[i].img.getBoundingClientRect();
+        if (imgArr[i].img.isLoaded)
+				{var rect = imgArr[i].img.getBoundingClientRect();
 				this._fullImgs.push(imgArr[i].img);
 				this._positionFullImgs.call(this, imgArr[i].img, i);
-				this._fullImgDimensions.push(rect);
+				this._fullImgDimensions.push(rect);}
 			}
-			
+
 			this._fullImgsLoaded = true;
 		}.bind(this));
 	};
@@ -1336,7 +1338,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 	Gallery.prototype._positionFullImgs = function(img, i, applyTransform) {
 		var transform = this._transformFullImg(img, this._thumbs[i]);
 		this._fullImgsTransforms.push(transform);
-		
+
 		img.style.marginTop = -img.height / 2 + 'px';
 		img.style.marginLeft = -img.width / 2 + 'px';
 		if (applyTransform !== false) {
@@ -1380,7 +1382,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 		this._fullImgsTransforms = [];
 
 		for (var i = 0, ii = this._fullImgs.length; i < ii; i++) {
-			
+
 			var size = {
 				width: this._fullImgDimensions[i].width,
 				height: this._fullImgDimensions[i].height,
@@ -1463,7 +1465,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 
 		this._setupComplete = true;
 
-		if (fn) fn();	
+		if (fn) fn();
 
 	};
 
@@ -1534,7 +1536,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 
 			this._fullImg.addEventListener(transitionendString, fullImgTransEnd);
 			this._enableScroll();
-			
+
 		}.bind(this);
 
 		window.requestAnimationFrame(animation);
@@ -1603,7 +1605,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 		function preventDefault(e) {
 			e = e || window.event;
 			if (e.preventDefault) e.preventDefault();
-			e.returnValue = false;  
+			e.returnValue = false;
 		}
 
 		window.onwheel = preventDefault;
@@ -1617,7 +1619,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 	 */
 
 	Gallery.prototype._enableScroll = function() {
-		window.onwheel = null; 
+		window.onwheel = null;
 		window.ontouchmove = null;
 	};
 
@@ -1675,11 +1677,11 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 	 * Get the height that make all images fit the container
 	 *
 	 * width = w1 + w2 + w3 + ... = r1*h + r2*h + r3*h + ...
-	 * 
+	 *
 	 * @param  {[type]} images the images to be calculated
 	 * @param  {[type]} width  the container witdth
-	 * @param  {[type]} margin the margin between each image 
-	 * 
+	 * @param  {[type]} margin the margin between each image
+	 *
 	 * @return {[type]}        the height
 	 */
 	var _getHeigth = function(images, width, margin) {
@@ -1732,7 +1734,7 @@ window.MaterialPhotoGallery = MaterialPhotoGallery;
 	GoogleImageLayout.align = function(elem) {
 
 		//get the data attribute
-		
+
 		var containerWidth = elem.clientWidth,
 			maxHeight = parseInt(elem.getAttribute('data-max-height') || 120);
 
